@@ -25,10 +25,9 @@ const maxLength = (text: string, maxLength: number) => {
 
 const isEmail = (text: string) => {
   if (
-    !text.includes("@") ||
-    !text[text.indexOf("@") - 1] ||
-    !text[text.indexOf("@") + 1] ||
-    text.split("@").length - 1 !== 1
+    text.split("@").length - 1 !== 1 ||
+    !text[text.indexOf("@") - 1].trim() ||
+    !text[text.indexOf("@") + 1].trim()
   ) {
     return false;
   }
