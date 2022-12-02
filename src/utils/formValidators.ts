@@ -24,11 +24,10 @@ const maxLength = (text: string, maxLength: number) => {
 };
 
 const isEmail = (text: string) => {
-  if (
-    text.split("@").length - 1 !== 1 ||
-    !text[text.indexOf("@") - 1].trim() ||
-    !text[text.indexOf("@") + 1].trim()
-  ) {
+  const splitted = text.split("@");
+  if (splitted.length !== 2) return false;
+
+  if (splitted[0].trim().length < 1 || splitted[1].trim().length < 1) {
     return false;
   }
 
