@@ -54,7 +54,7 @@ function App() {
 
         <button type="submit">Submit</button>
       </form>
-      <p>Błędy na formularzu: {isError ? "TAK" : "NIE"}</p>
+      <p>Form errors: {isError ? "YES" : "NO"}</p>
     </>
   );
 }
