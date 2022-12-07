@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { validate } from "../utils/formValidators";
-import type { Validators } from "../utils/formValidators";
+import { validate } from "./validators";
+import type { Validators } from "./validators";
 
 type FormElement = {
   value: string;
