@@ -38,7 +38,10 @@ function App() {
         </p>
 
         <button type="submit">Submit</button>
-        <p>Errors on form: {isError ? "YES" : "NO"}</p>
+        <p>
+          Errors on form (updates when submit is clicked):{" "}
+          {isError ? "YES" : "NO"}
+        </p>
       </form>
     </>
   );
