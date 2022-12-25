@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from "react";
+import { FormEvent, FormEventHandler, useState } from "react";
 import { validate } from "./validators";
 import type { Validators } from "./validators";
 
@@ -53,8 +53,8 @@ const useForm = () => {
     }
   };
 
-  const submitForm = (userSubmit: React.FormEventHandler<HTMLFormElement>) => {
-    return (e: React.FormEvent<HTMLFormElement>) => {
+  const submitForm = (userSubmit: FormEventHandler<HTMLFormElement>) => {
+    return (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
       let error = false;
