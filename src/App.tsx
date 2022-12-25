@@ -1,40 +1,25 @@
 import React from "react";
-import { useState } from "react";
 import useForm from "./hooks/useForm";
 
 function App() {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
-  const { updateForm, tag, errors, isError } = useForm();
+  const { form, tag, errors, updateValue, isError, submitForm } = useForm();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    updateForm(formData);
-  };
-
-  const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
-    const propName = e.currentTarget.name;
-    const newValue = e.currentTarget.value;
-
-    setFormData((prev) => ({
-      ...prev,
-      [propName]: newValue,
-    }));
+    console.log(form);
   };
 
   return (
     <>
       <h1>Register new user</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={submitForm(handleSubmit)}>
         <p>
           <input
             {...tag("email", { email: true })}
             placeholder="email"
             type="text"
-            onChange={handleChange}
+            onChange={updateValue}
           />
           Errors: {errors.email}
         </p>
@@ -47,14 +32,14 @@ function App() {
             })}
             placeholder="password"
             type="password"
-            onChange={handleChange}
+            onChange={updateValue}
           />
           Errors: {errors.password}
         </p>
 
         <button type="submit">Submit</button>
+        <p>Errors on form: {isError ? "YES" : "NO"}</p>
       </form>
-      <p>Form errors: {isError ? "YES" : "NO"}</p>
     </>
   );
 }
