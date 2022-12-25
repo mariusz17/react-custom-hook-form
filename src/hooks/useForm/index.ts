@@ -72,10 +72,9 @@ const useForm = () => {
 
       if (error) {
         setIsError(true);
-        return;
       } else {
         setIsError(false);
-        return userSubmit;
+        userSubmit(e);
       }
     };
   };
