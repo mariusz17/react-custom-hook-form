@@ -70,7 +70,9 @@ export const validate = (
           break;
         case "minLength":
           if (!minLength(text, validators.minLength!)) {
-            return `Has to be longer than ${validators.minLength!} characters.`;
+            return `Has to be longer than ${
+              validators.minLength! - 1
+            } characters.`;
           }
           break;
         case "maxLength":
