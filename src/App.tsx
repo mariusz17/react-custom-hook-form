@@ -1,8 +1,17 @@
 import React from "react";
 import useForm from "./hooks/useForm";
 
+type FormType = {
+  email: string;
+  password: string;
+};
+
 function App() {
-  const { form, tag, errors, updateValue, isError, submitForm } = useForm();
+  const { form, errors, tag, updateValue, isError, submitForm } =
+    useForm<FormType>({
+      email: "",
+      password: "",
+    });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -20,19 +29,20 @@ function App() {
             placeholder="email"
             type="text"
             onChange={updateValue}
+            value={form.email}
           />
           Errors: {errors.email}
         </p>
         <p>
           <input
             {...tag("password", {
-              required: true,
               minLength: 5,
               maxLength: 10,
             })}
             placeholder="password"
             type="password"
             onChange={updateValue}
+            value={form.password}
           />
           Errors: {errors.password}
         </p>
